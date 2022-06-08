@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.scss';
+import { ContextApp } from './context/ContextApp';
+import { useContext } from 'react';
 
 function App() {
+  const {games} = useContext(ContextApp)
+  console.log(games);
   return (
     <div className="App">
       <header className="App-header">
