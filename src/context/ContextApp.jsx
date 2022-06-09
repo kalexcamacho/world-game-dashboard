@@ -4,37 +4,49 @@ export const ContextApp = createContext([]);
 export const ContextAppProvider = (props) => {
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   async function fetchGames() {
-    const res = await fetch("http://localhost:3000/api/products", {
+    const res = await fetch("http://localhost:3030/api/products", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
-      }
+      },
     });
     const data = await res.json();
     setGames(data);
   }
 
   function fetchUsers() {
-    fetch("http://localhost:3000/api/users", {
+    fetch("http://localhost:3030/api/users", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
-      }
+      },
     })
-      .then(res => res.json())
-      .then(data => setUsers(data))
-      .catch(err => console.log(err))
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+      .catch((err) => console.log(err));
+  }
+  async function fetchGenres() {
+    const res = await fetch("http://localhost:3030/api/genres", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    setGenres(data);
   }
 
   useEffect(() => {
     fetchGames();
     fetchUsers();
+    fetchGenres();
   }, []);
-  
+
   return (
-    <ContextApp.Provider value={{ games, users }}>
+    <ContextApp.Provider value={{ games, users, genres }}>
       {props.children}
     </ContextApp.Provider>
   );
