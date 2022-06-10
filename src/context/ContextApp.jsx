@@ -6,6 +6,7 @@ export const ContextAppProvider = (props) => {
   const [users, setUsers] = useState([]);
   const [genres, setGenres] = useState([]);
   const [filterList, setFilterList] = useState([])
+  const [posts, setPosts] = useState([]);
 
   async function fetchGames() {
     const res = await fetch("http://localhost:3030/api/products", {
@@ -41,14 +42,26 @@ export const ContextAppProvider = (props) => {
     setGenres(data);
   }
 
+  async function fetchPosts() {
+    const res = await fetch("http://localhost:3030/api/community", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      }
+    });
+    const data = await res.json();
+    setPosts(data);
+  }
+
   useEffect(() => {
     fetchGames();
     fetchUsers();
     fetchGenres();
+    fetchPosts();
   }, []);
 
   return (
-    <ContextApp.Provider value={{ games, users, genres, filterList, setFilterList }}>
+    <ContextApp.Provider value={{ games, users, posts, genres, filterList, setFilterList }}>
       {props.children}
     </ContextApp.Provider>
   );
