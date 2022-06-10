@@ -22,12 +22,6 @@ function App() {
           <Route path="/posts" element={<PostAdmin/>} />
       </Routes>
         </main>
-      {/* <Games />
-      <Users />
-      <AddGame />
-      <PostAdmin/>
-      <Home />
-       */}
     </div>
   );
 }

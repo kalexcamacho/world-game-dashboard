@@ -2,11 +2,13 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const ContextApp = createContext([]);
 export const ContextAppProvider = (props) => {
+  const [apiCall, setApiCall] = useState(false)
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
   const [genres, setGenres] = useState([]);
   const [filterList, setFilterList] = useState([])
   const [posts, setPosts] = useState([]);
+  const [library, setLibrary] = useState([]);
 
   async function fetchGames() {
     const res = await fetch("http://localhost:3030/api/products", {
@@ -52,16 +54,28 @@ export const ContextAppProvider = (props) => {
     const data = await res.json();
     setPosts(data);
   }
+  async function fetchLibrary() {
+    const res = await fetch("http://localhost:3030/api/users/library", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      }
+    });
+    const data = await res.json();
+    setLibrary(data);
+  }
+
 
   useEffect(() => {
     fetchGames();
     fetchUsers();
     fetchGenres();
     fetchPosts();
-  }, []);
+    fetchLibrary();
+  }, [apiCall]);
 
   return (
-    <ContextApp.Provider value={{ games, users, posts, genres, filterList, setFilterList }}>
+    <ContextApp.Provider value={{ games, users, posts, genres, filterList, setFilterList, library, apiCall, setApiCall }}>
       {props.children}
     </ContextApp.Provider>
   );
