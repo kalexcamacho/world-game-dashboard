@@ -5,7 +5,18 @@ import './Users.scss'
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function Users() {
-    const {users} = useContext(ContextApp);
+    const {users, library, posts} = useContext(ContextApp);
+    function updateUser(id, nickName, name, event){
+        event.preventDefault();
+        fetch(`http://localhost:3030/users/edit/${id}`,{
+            method: 'PUT',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json",
+              },
+            body: J
+        })
+    }
   return (
     <div className='table-container'>
         <h2>Administrador de Usuarios</h2>
@@ -25,17 +36,21 @@ function Users() {
             </thead>
             <tbody>
             {users.map(user =>{
+                let libraryUser = library.filter(lib => lib.user_id === user.id)
+                let postUser = posts.filter(post => post.user_id === user.id)
+                console.log(libraryUser)
                return(
                <tr key={user.id}>
-                   <td className='td-avatar'><Avatar /></td>
+                   <td className='td-avatar'>
+                       <Avatar src={`./images/usersProfileImages/${user.img_user}`} /></td>
                    <td>{user.id}</td>
                    <td>{user.nickName}</td>
                    <td>{user.name}</td>
                    <td>{user.email}</td>
                    <td>{user.updated_at}</td>
-                    <td>{user.name.length}</td>
-                    <td>{user.email.length}</td>
-                     <td><DeleteIcon /></td>
+                    <td>{libraryUser.length}</td>
+                    <td>{postUser.length}</td>
+                     <td><button onClick={(event) => updateUser(user.id, user.nickName, user.name, event)}><DeleteIcon /></button></td>
                </tr>
                 )
             })}
