@@ -8,17 +8,26 @@ import AddGame from "./views/addGame/AddGame";
 import PostAdmin from "./views/PostAdmin/PostAdmin";
 import { Routes, Route } from "react-router-dom";
 import Home from "./views/home/Home";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
     <div className="App">
-      <Games />
+        <NavBar />
+        <main>
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/games" element={<Games />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/posts" element={<PostAdmin/>} />
+      </Routes>
+        </main>
+      {/* <Games />
       <Users />
-      {/* <GameDetail {...games[1]} /> */}
       <AddGame />
       <PostAdmin/>
       <Home />
-      {/* <Games /> */}
+       */}
     </div>
   );
 }
