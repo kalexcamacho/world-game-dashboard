@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ContextApp } from "../../context/ContextApp";
-import CardGame from "../../componets/cardGame/CardGame";
+import CardGame from "../../components/cardGame/CardGame";
 
 
 const Games = () => {
