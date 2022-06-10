@@ -7,6 +7,7 @@ import GameDetail from "./views/gameDetail/GameDetail";
 import AddGame from "./views/addGame/AddGame";
 import PostAdmin from "./views/PostAdmin/PostAdmin";
 import { Routes, Route } from "react-router-dom";
+import Home from "./views/home/Home";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       {/* <GameDetail {...games[1]} /> */}
       <AddGame />
       <PostAdmin/>
+      <Home />
+      {/* <Games /> */}
     </div>
   );
 }
