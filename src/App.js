@@ -1,15 +1,14 @@
-import logo from "./logo.svg";
 import "./App.scss";
 import { ContextApp } from "./context/ContextApp";
 import { useContext } from "react";
+import PostAdmin from "./views/PostAdmin/PostAdmin";
 
 function App() {
-  const { games } = useContext(ContextApp);
+  const { posts } = useContext(ContextApp);
+  console.log(posts);
   return (
     <div className="App">
-      {games.map((game, i) => {
-        return <p key={i}>{game.title}</p>;
-      })}
+      <PostAdmin/>
     </div>
   );
 }
