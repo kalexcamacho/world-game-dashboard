@@ -1,21 +1,29 @@
 import './UserPost.scss'
+import { ContextApp } from '../../context/ContextApp';
+import { useContext } from 'react';
+import DataUserPost from '../DataUserPost/DataUserPost';
 
-function UserPost({description}) {
+function UserPost({ title, description, created_at, img, user_id }) {
+    const { users } = useContext(ContextApp);
+    let specificUser = users.filter(user =>{
+       return user.id === user_id
+    })
+    console.log(specificUser);
     return (
-        <article className="postContainer">
+        <article>
+            {specificUser.map(user => {
+                return <DataUserPost key={user.id} {...user} />
+            })}
+            
             <div>
-                <img className="" src="" alt="Profile img"/>
-                <h3>kalexcamacho</h3>
-                <p>hace 14 días</p>
-            </div>
-            <div>
-                <p>Bomberman</p>
+                <p>{created_at}</p>
+                <p>{title}</p>
                 <p>{description}</p>
-                <img className="" src="" alt="Game img"/>
+                <img className="" src={`./images/usersPostImages/${img}`} alt="Game img" />
                 <button>Marcar como inadecuado</button>
             </div>
         </article>
     );
-  }
-  
-  export default UserPost;
+}
+
+export default UserPost;

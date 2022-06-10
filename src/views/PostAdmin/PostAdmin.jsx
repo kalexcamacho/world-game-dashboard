@@ -9,6 +9,7 @@ function PostAdmin() {
     return (
         <section>
             <h2>Administrador de post</h2>
+            
             {posts.map(post =>{
                 return <UserPost key={post.id} {...post}/>
             })}
