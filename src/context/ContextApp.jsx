@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const ContextApp = createContext([]);
 export const ContextAppProvider = (props) => {
+  const [apiCall, setApiCall] = useState(false)
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -71,10 +72,10 @@ export const ContextAppProvider = (props) => {
     fetchGenres();
     fetchPosts();
     fetchLibrary();
-  }, []);
+  }, [apiCall]);
 
   return (
-    <ContextApp.Provider value={{ games, users, posts, genres, filterList, setFilterList, library }}>
+    <ContextApp.Provider value={{ games, users, posts, genres, filterList, setFilterList, library, apiCall, setApiCall }}>
       {props.children}
     </ContextApp.Provider>
   );
