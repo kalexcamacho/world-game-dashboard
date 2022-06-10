@@ -5,8 +5,7 @@ import './Users.scss'
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function Users() {
-    const {users, games} = useContext(ContextApp)
-    console.log(users)
+    const {users} = useContext(ContextApp);
   return (
     <div className='table-container'>
         <h2>Administrador de Usuarios</h2>

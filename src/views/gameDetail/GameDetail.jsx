@@ -13,7 +13,6 @@ const GameDetail = ({
 }) => {
   const { genres } = useContext(ContextApp);
   const genreName = genres.filter((genre) => genre.id === genre_id);
-  console.log(genreName);
   return (
     <section>
       <h1>Administrador de juegos</h1>

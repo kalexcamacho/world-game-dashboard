@@ -6,10 +6,9 @@ import Users from "./views/Users/Users";
 import GameDetail from "./views/gameDetail/GameDetail";
 import AddGame from "./views/addGame/AddGame";
 import PostAdmin from "./views/PostAdmin/PostAdmin";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const { posts } = useContext(ContextApp);
-  console.log(posts);
   return (
     <div className="App">
       <Games />
