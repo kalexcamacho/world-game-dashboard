@@ -1,14 +1,15 @@
-import logo from "./logo.svg";
 import "./App.scss";
 import { ContextApp } from "./context/ContextApp";
 import { useContext } from "react";
-import Games from "./views/games/Games";
+//import Games from "./views/games/Games";
+import Home from "./views/home/Home";
 
 function App() {
   const { games } = useContext(ContextApp);
   return (
     <div className="App">
-      <Games />
+      <Home />
+      {/* <Games /> */}
     </div>
   );
 }
