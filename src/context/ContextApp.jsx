@@ -6,7 +6,7 @@ export const ContextAppProvider = (props) => {
   const [users, setUsers] = useState([]);
 
   async function fetchGames() {
-    const res = await fetch("http://localhost:3000/api/products", {
+    const res = await fetch("http://localhost:3030/api/products", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export const ContextAppProvider = (props) => {
   }
 
   function fetchUsers() {
-    fetch("http://localhost:3000/api/users", {
+    fetch("http://localhost:3030/api/users", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
