@@ -29,7 +29,7 @@ export const ContextAppProvider = (props) => {
       .catch((err) => console.log(err));
   }
   async function fetchGenres() {
-    const res = await fetch("http://localhost:3030/api/genres", {
+    const res = await fetch("http://localhost:3030/api/products/genres", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
