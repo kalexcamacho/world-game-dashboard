@@ -5,6 +5,7 @@ export const ContextAppProvider = (props) => {
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
   const [genres, setGenres] = useState([]);
+  const [filterList, setFilterList] = useState([])
 
   async function fetchGames() {
     const res = await fetch("http://localhost:3030/api/products", {
@@ -15,6 +16,7 @@ export const ContextAppProvider = (props) => {
     });
     const data = await res.json();
     setGames(data);
+    setFilterList(data)
   }
 
   function fetchUsers() {
@@ -46,7 +48,7 @@ export const ContextAppProvider = (props) => {
   }, []);
 
   return (
-    <ContextApp.Provider value={{ games, users, genres }}>
+    <ContextApp.Provider value={{ games, users, genres, filterList, setFilterList }}>
       {props.children}
     </ContextApp.Provider>
   );
