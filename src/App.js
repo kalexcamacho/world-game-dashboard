@@ -6,6 +6,8 @@ import Users from "./views/Users/Users";
 import GameDetail from "./views/gameDetail/GameDetail";
 import AddGame from "./views/addGame/AddGame";
 import PostAdmin from "./views/PostAdmin/PostAdmin";
+//import Games from "./views/games/Games";
+import Home from "./views/home/Home";
 
 function App() {
   const { posts } = useContext(ContextApp);
@@ -17,6 +19,8 @@ function App() {
       {/* <GameDetail {...games[1]} /> */}
       <AddGame />
       <PostAdmin/>
+      <Home />
+      {/* <Games /> */}
     </div>
   );
 }
