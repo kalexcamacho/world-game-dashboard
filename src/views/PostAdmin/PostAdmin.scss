@@ -1,0 +1,34 @@
+.postAdmin{
+    padding: 20px;
+    h2{
+        font-size: 18px;
+        color: #117B0F;
+    }
+    .cardsPostContainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .postAdmin {
+        padding: 28px;
+        h2{
+            font-size: 26px;
+        }
+    }
+
+}
+
+@media screen and (min-width: 1220px) {
+
+    .postAdmin {
+        padding: 35px;
+        h2{
+            font-size: 26px;
+        }
+    }
+
+}

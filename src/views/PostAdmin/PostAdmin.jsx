@@ -6,13 +6,14 @@ import { useContext } from 'react';
 function PostAdmin() {
     const {posts} = useContext(ContextApp);
     return (
-        <section>
+        <section className='postAdmin'>
             <h2>Administrador de post</h2>
             
+            <div className='cardsPostContainer'>
             {posts.map(post =>{
                 return <UserPost key={post.id} {...post}/>
             })}
-            
+            </div>
         </section>
     );
   }
