@@ -1,24 +1,42 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from "react";
+import './NavBar.scss'
+import { Link } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import PersonIcon from "@mui/icons-material/Person";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import TextSnippetIcon from "@mui/icons-material/TextSnippet";
+
 function NavBar() {
+    const iconsStyle = {
+        color: '#fff',
+        fontSize: 30
+    }
   return (
-    <nav>
-        <ul>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <Link to="/users">Users</Link>
-            </li>
-            <li>
-                <Link to="/games">Games</Link>
-            </li>
-            <li>
-                <Link to="/posts">Posts</Link>
-            </li>
-            </ul>
+    <nav className="appNavBar">
+      <ul>
+        <li>
+          <Link to="/">
+            <HomeIcon style={iconsStyle}/>
+          </Link>
+        </li>
+        <li>
+          <Link to="/users">
+            <PersonIcon style={iconsStyle} />
+          </Link>
+        </li>
+        <li>
+          <Link to="/games">
+            <SportsEsportsIcon style={iconsStyle} />
+          </Link>
+        </li>
+        <li>
+          <Link to="/posts">
+            <TextSnippetIcon style={iconsStyle} />
+          </Link>
+        </li>
+      </ul>
     </nav>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;
