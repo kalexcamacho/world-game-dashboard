@@ -11,7 +11,7 @@ const Games = () => {
     let updateList = games.filter((value) => {
       return e.target.value === "todos"
         ? value
-        : value.genre_id == e.target.value;
+        : value.genre_id === e.target.value;
     });
     setFilterList(updateList);
   };
