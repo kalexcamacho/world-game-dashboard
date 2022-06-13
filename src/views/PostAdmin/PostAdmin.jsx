@@ -5,7 +5,6 @@ import { useContext } from 'react';
 
 function PostAdmin() {
     const {posts} = useContext(ContextApp);
-    console.log(posts)
     return (
         <section>
             <h2>Administrador de post</h2>
