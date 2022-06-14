@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
+import "./GameDetail.scss";
 import { ContextApp } from "../../context/ContextApp";
+import { Link } from "react-router-dom";
 
 const GameDetail = ({
+  id,
   title,
   img_card,
+  description,
   genre_id,
   price,
   discount,
@@ -12,28 +16,23 @@ const GameDetail = ({
   playstation,
 }) => {
   const { genres } = useContext(ContextApp);
-  const genreName = genres.filter((genre) => genre.id === genre_id);
+  const genreName = genres.find((genre) => genre.id === genre_id);
   return (
-    <section>
+    <section className="gameDetail">
       <h1>Administrador de juegos</h1>
       <h4>Informacion de: {title}</h4>
-      <article>
-        <picture>
-          <img
-            src={`./images/products/${img_card}`}
-            alt={title}
-            style={{ width: "120px" }}
-          />
-        </picture>
+      <article className="gameDetailInfo">
+        <img src={`../../../images/products/${img_card}`} alt={title} />
         <div>
           <h2>{title}</h2>
-          <h4>{genreName[0]?.title}</h4>
-          <h3>{price}</h3>
-          <h5>{discount}</h5>
-          <p>{xbox === 1 && "Xbox"}</p>
-          <p>{pc === 1 && "PC"}</p>
-          <p>{playstation === 1 && "Play Station"}</p>
-          <a href="">editar juego</a>
+          <h4>{genreName?.title}</h4>
+          <p className="txtGame">{description}</p>
+          <h3>{price === 0 ? "Free to play" : `Precio: $${price.toFixed(3)}`}</h3>
+          <h5>{discount === 0 ? "Sin descuento" : `Descuento: ${discount}% Precio final: ${(price - (price * (discount / 100))).toFixed(3)}`}</h5>
+          {xbox === 1 && <p>Xbox</p>}
+          {pc === 1 && <p>Pc</p>}
+          {playstation === 1 && <p>PlayStation</p>}
+          <Link to={`/gameEdit/${id}`} >editar juego</Link>
         </div>
       </article>
     </section>

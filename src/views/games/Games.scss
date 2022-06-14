@@ -1,12 +1,12 @@
 @import "../../App.scss";
 
 .games {
-  width: 100%;
   padding: 20px 15px 100px;
+  width: 100%;
 
   h1 {
-    font-size: 18px;
     color: $greenDark;
+    font-size: 18px;
     margin-bottom: 40px;
   }
 
@@ -69,7 +69,13 @@
     }
 
     .listContainer {
-        justify-content: center;
+      justify-content: center;
     }
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .games {
+    padding: 35px 40px 80px;
   }
 }

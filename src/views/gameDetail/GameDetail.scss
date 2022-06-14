@@ -1,0 +1,104 @@
+@import "../../App.scss";
+
+.gameDetail {
+  padding: 20px 15px 100px;
+  width: 100%;
+
+  h1 {
+    color: $greenDark;
+    font-size: 18px;
+  }
+
+  h4 {
+    color: $green;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+
+  .txtGame{
+    margin-bottom: 30px;
+    max-width: 450px;
+  }
+
+  .gameDetailInfo {
+    width: 100%;
+    img {
+      margin: 0 0 20px;
+      width: 100%;
+    }
+    div {
+      h2 {
+        color: $greenDark;
+        font-size: 26px;
+      }
+      h4 {
+        color: $grayDArk;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      h3 {
+        color: $green;
+        font-size: 18px;
+        font-weight: 400;
+      }
+      h5 {
+        color: $grayDArk;
+        font-size: 16px;
+        font-style: italic;
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+      p {
+        color: $grayDArk;
+        font-size: 16px;
+      }
+      a {
+        color: $greenDark;
+        font-size: 18px;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .gameDetail {
+    padding: 30px 30px 50px;
+    h1 {
+      font-size: 26px;
+      margin-bottom: 5px;
+    }
+    h4 {
+      font-size: 20px;
+      margin-bottom: 90px;
+    }
+    .gameDetailInfo {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      img {
+        width: 280px;
+        margin: 0 20px 0 0;
+        padding-right: 20px;
+        border-right: 2px solid $greenDark;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .gameDetail {
+    padding: 35px 40px;
+
+    .gameDetailInfo {
+      justify-content: flex-start;
+      img {
+        width: 380px;
+        margin: 0 20px 0 100px;
+        border-right: 2px solid $greenDark;
+      }
+    }
+  }
+}

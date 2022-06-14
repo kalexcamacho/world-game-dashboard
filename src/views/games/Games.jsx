@@ -11,7 +11,7 @@ const Games = () => {
     let updateList = games.filter((value) => {
       return e.target.value === "todos"
         ? value
-        : value.genre_id === e.target.value;
+        : value.genre_id == e.target.value;
     });
     setFilterList(updateList);
   };
@@ -19,7 +19,7 @@ const Games = () => {
     <section className="games">
       <h1>Administrador de juegos</h1>
       <div className="filter">
-        <Link to="/">+ agregar juego nuevo</Link>
+        <Link to="/addGame">+ agregar juego nuevo</Link>
         <select name="genre" onChange={filterHandler}>
           <option value="todos">Todos los generos</option>
           {genres.map((genre) => {
@@ -34,7 +34,7 @@ const Games = () => {
       <h5>Mostrando {filterList.length} resultados</h5>
       <div className="listContainer">
         {filterList.map((game) => {
-          return <CardGame key={game.id} {...game} />;
+          return <Link key={game.id} to={`/gameDetail/${game.id}`}><CardGame {...game} /></Link>
         })}
       </div>
     </section>
