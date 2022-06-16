@@ -8,16 +8,14 @@
     h1{
         color: #107C10;
         font-size: 1.2rem;
-        margin: 10px 15px ;
+        margin: 5px 5px ;
     }
     p{
         color: #107C10;
         text-align: center;
     }
     article{
-        display: inline-flex;
-   
-        width: 90vw;
+        width: 80vw;
         border-radius: 5px;
     }
 }
@@ -27,10 +25,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-
     article{
-        margin: 10px 20px;
+        margin: 5px 5px;
     }
     h2{
         color: #505050;
@@ -42,9 +38,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     background-color: #EFEFEF;
-    padding: 20px;
+    padding: 10px;
     p{
         color: #505050;
     }
@@ -52,10 +47,39 @@
         color: #169716;
         font-size: 1.5rem;
     }
+
+    .User-img, .Game-img{
+        display: none;
+    }
+    .User-data{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
 }
 
 .Section-estadistics{
     background-color: #2F2F2F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0 30px 0;
+    padding: 5px 0 10px 0;
+
+    .numbers{
+        text-decoration: underline;
+        font-size: 2rem;
+    }
+    .numbers-games{
+        font-size: 2.5rem;
+    }
+    .names{
+        color: white;
+        font-size: 1.2rem;
+    }
 }
 
 .Section-data{
@@ -75,3 +99,54 @@
     }
 }
 
+@media screen and (min-width: 768px) {
+    .Section-user{
+        flex-direction: row;
+        display: flex;
+        .User-img{
+            display:flex;
+            width: 100%;
+            justify-content: center;
+
+        }
+        .Game-img{
+            display:flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .User-img img{
+            width: 40%;
+            border-radius: 10%;
+            border: #169716 solid 3px;
+            max-height: 220px;
+            max-width: 120px;
+        }
+        .Game-img img{
+            width: 40%;
+            border: #169716 solid 3px;
+            max-height: 220px;
+            max-width: 120px;
+        }
+        .User-data{
+            width: 100%;
+            align-items: flex-start;
+        }
+    }
+}
+
+@media screen and (min-width: 1220px) {
+    .Section-wrapper{
+        flex-direction: row;
+        height: 50vh;
+
+    }
+    .Section-estadistics{
+        flex-direction: row;
+        height: 46vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    
+
+}
