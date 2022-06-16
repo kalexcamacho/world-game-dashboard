@@ -4,8 +4,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 function UserPost({ title, description, created_at, img, user_id }) {
-  const { users } = useContext(ContextApp);
+  const { users, games } = useContext(ContextApp);
   const user = users.find((user) => user.id === user_id);
+  const game = games.find(i => i.id == title)
   const publicationTime = (day) => {
     let toDay = new Date().getTime();
     let fecha = new Date(day).getTime();
@@ -42,7 +43,7 @@ function UserPost({ title, description, created_at, img, user_id }) {
 
       <div>
         <Link className="gameTitle" to={"/games"}>
-          {title}
+          {game.title}
         </Link>
         <p>{description}</p>
         <img src={`./images/usersPostImages/${img}`} alt="Game img" />
