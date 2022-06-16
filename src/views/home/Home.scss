@@ -1,152 +1,219 @@
-.Home-wrapper{
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
+.Home-wrapper {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  color: #505050;
+  justify-content: space-between;
+  height: 100vh;
+
+  h1 {
+    color: #107c10;
+    font-size: 1.2rem;
+    padding: 20px;
+    // margin: 5px 5px;
+  }
+  p {
+    color: #107c10;
+    text-align: center;
+  }
+  article {
+    width: 80vw;
+    border-radius: 5px;
+  }
+}
+
+.Section-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  article {
+    margin: 5px 5px;
+  }
+  h2 {
     color: #505050;
-    justify-content: center;
-
-    h1{
-        color: #107C10;
-        font-size: 1.2rem;
-        margin: 5px 5px ;
-    }
-    p{
-        color: #107C10;
-        text-align: center;
-    }
-    article{
-        width: 80vw;
-        border-radius: 5px;
-    }
+  }
 }
 
-.Section-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    article{
-        margin: 5px 5px;
-    }
-    h2{
-        color: #505050;
-    }
-}
+.Section-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #efefef;
+  padding: 10px;
+  p {
+    color: #505050;
+  }
+  .Section-user-price {
+    color: #169716;
+    font-size: 1.5rem;
+  }
 
-.Section-user{
+  .User-img,
+  .Game-img {
+    display: none;
+  }
+  .User-data {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #EFEFEF;
-    padding: 10px;
-    p{
-        color: #505050;
-    }
-    .Section-user-price{
-        color: #169716;
-        font-size: 1.5rem;
-    }
-
-    .User-img, .Game-img{
-        display: none;
-    }
-    .User-data{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 10px;
-    }
+    margin: 10px;
+    color: #169716;
+  }
+  .plataforms {
+    width: 20%;
+    height: auto;
+    padding: 0 15px;
+    display: none;
+  }
+  .plataforms-logos {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
-.Section-estadistics{
-    background-color: #2F2F2F;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 0 30px 0;
-    padding: 5px 0 10px 0;
-
-    .numbers{
-        text-decoration: underline;
-        font-size: 2rem;
-    }
-    .numbers-games{
-        font-size: 2.5rem;
-    }
-    .names{
-        color: white;
-        font-size: 1.2rem;
-    }
+.Section-estadistics {
+  background-color: #2f2f2f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5px 0 28px 0;
+  padding: 5px 0 30px 0;
+  .numbers {
+    text-decoration: underline;
+    font-size: 4rem;
+  }
+  .numbers-games {
+    font-size: 5rem;
+  }
+  .names {
+    color: white;
+    font-size: 1.2rem;
+  }
 }
 
-.Section-data{
-    display: flex;
-    margin: 15px 0;
-
-    p{
-        margin: 0 10px;
-        color: #505050;
-    }
-    .Section-data-left{
-        border-right: #107C10 solid 2px;
-    }
-    .Section-data-number{
-        color: #169716;
-        font-size: 1.5rem;
-    }
+.Section-data {
+  display: flex;
+  margin: 15px 0;
+  p {
+    margin: 0 10px;
+    color: #505050;
+  }
+  .Section-data-left {
+    border-right: #107c10 solid 2px;
+  }
+  .Section-data-number {
+    color: #169716;
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .Section-user{
-        flex-direction: row;
-        display: flex;
-        .User-img{
-            display:flex;
-            width: 100%;
-            justify-content: center;
-
-        }
-        .Game-img{
-            display:flex;
-            width: 100%;
-            justify-content: center;
-        }
-        .User-img img{
-            width: 40%;
-            border-radius: 10%;
-            border: #169716 solid 3px;
-            max-height: 220px;
-            max-width: 120px;
-        }
-        .Game-img img{
-            width: 40%;
-            border: #169716 solid 3px;
-            max-height: 220px;
-            max-width: 120px;
-        }
-        .User-data{
-            width: 100%;
-            align-items: flex-start;
-        }
+  .Section-user {
+    flex-direction: row;
+    display: flex;
+    .User-img {
+      display: flex;
+      width: 100%;
+      justify-content: center;
     }
+    .Game-img {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .User-img img {
+      width: 40%;
+      border-radius: 10%;
+      border: #169716 solid 3px;
+      max-height: 220px;
+      max-width: 120px;
+    }
+    .Game-img img {
+      width: 40%;
+      max-height: 220px;
+      max-width: 120px;
+    }
+    .User-data {
+      width: 100%;
+      align-items: flex-start;
+      .p-game {
+        font-size: 2rem;
+        padding: 5px;
+      }
+      .plataforms {
+        display: flex;
+        justify-content: space-around;
+        width: 18%;
+        height: auto;
+        padding: 0 15px;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 1220px) {
-    .Section-wrapper{
-        flex-direction: row;
-        height: 50vh;
-
+  .Home-wrapper {
+    article {
+      width: 40vw;
+      margin: 40px;
+      border-radius: 20px;
     }
-    .Section-estadistics{
-        flex-direction: row;
-        height: 46vh;
-        padding: 0;
-        margin: 0;
+  }
+  .Section-wrapper {
+    flex-direction: row;
+    padding: 50px;
+  }
+  .Section-user {
+    flex-direction: row;
+    height: 30vh;
+    .User-img img {
+      width: 50%;
+      max-height: 260px;
+      max-width: 160px;
     }
-
-    
-
+    .Game-img img {
+      width: 50%;
+      max-height: 260px;
+      max-width: 140px;
+    }
+    .title-pc {
+      width: 100%;
+    }
+  }
+  .Section-estadistics {
+    flex-direction: row;
+    padding: 2.25vw 40px;
+    margin: 0;
+    .numbers {
+      margin: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      font-size: 8rem;
+    }
+    .numbers-games {
+      font-size: 10rem;
+      margin: 10px;
+      padding: 15px;
+    }
+  }
+  .title-mobile-1 {
+    position: absolute;
+    top: 80px;
+    left: 6.5vw;
+  }
+  .title-mobile-2 {
+    position: absolute;
+    top: 80px;
+    left: 52.5vw;
+  }
+  .User-data {
+    .plataforms-logos {
+      justify-content: space-around;
+    }
+  }
 }

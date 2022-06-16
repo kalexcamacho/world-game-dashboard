@@ -9,10 +9,15 @@ $grayDArk: #505050;
   padding: 0;
 }
 
+main{
+  margin: 0;
+  padding: 0;
+}
+
 .App{
   .mainContainer {
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 
@@ -25,6 +30,6 @@ $grayDArk: #505050;
   .mainContainer {
     height: 100vh;
     width: 96%;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
