@@ -19,7 +19,7 @@ function Users() {
         userName: `Usuario bloqueado(${name})`,
       }),
     });
-    setApiCall(!apiCall)
+    setApiCall(apiCall+1)
   }
   return (
     <div className="table-container">
@@ -42,6 +42,8 @@ function Users() {
           {users.map((user) => {
             let libraryUser = library.filter((lib) => lib.user_id === user.id);
             let postUser = posts.filter((post) => post.user_id === user.id);
+            let dateUser = new Date(user.updated_at);
+            const date = `${dateUser.getDate()}/${dateUser.getMonth() + 1}/${dateUser.getFullYear()}`;
             return (
               <tr key={user.id}>
                 <td className="td-avatar">
@@ -53,7 +55,7 @@ function Users() {
                 <td>{user.nickName}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.updated_at}</td>
+                <td>{date}</td>
                 <td>{libraryUser.length}</td>
                 <td>{postUser.length}</td>
                 <td>

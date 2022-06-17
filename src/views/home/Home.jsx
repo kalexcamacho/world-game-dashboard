@@ -6,11 +6,10 @@ import { ContextApp } from "../../context/ContextApp";
 const Home = () => {
   const { users, games, posts, library } = useContext(ContextApp);
   const lastUser = users[users.length - 1];
-  const userGames = library.filter((game) => game.userId === lastUser.id);
-  const userPosts = posts.filter((post) => post.userId === lastUser.id);
+  const userGames = library.filter((game) => game.userId === lastUser?.id);
+  const userPosts = posts.filter((post) => post.userId === lastUser?.id);
   const lastGame = games[games.length - 1];
 
-  console.log(lastGame);
   return (
     <section className="Home-wrapper">
       <h1>Dashboard de administrador</h1>
@@ -18,7 +17,7 @@ const Home = () => {
         <p className="title-mobile-1">Ultimo usuario creado</p>
         <article className="Section-user">
           <div className="User-img">
-            <img src={`/images/usersProfileImages/${lastUser.img_user}`} alt="" />
+            <img src={`/images/usersProfileImages/${lastUser?.img_user}`} alt="" />
           </div>
           <div className="User-data">
             <h2>{lastUser?.name}</h2>
