@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const ContextApp = createContext([]);
 export const ContextAppProvider = (props) => {
-  const [apiCall, setApiCall] = useState(false)
+  const [apiCall, setApiCall] = useState(0)
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
   const [genres, setGenres] = useState([]);

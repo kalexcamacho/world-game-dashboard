@@ -19,7 +19,7 @@ function Users() {
         userName: `Usuario bloqueado(${name})`,
       }),
     });
-    setApiCall(!apiCall)
+    setApiCall(apiCall + 1)
   }
   return (
     <div className="table-container">

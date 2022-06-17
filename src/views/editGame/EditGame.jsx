@@ -49,8 +49,8 @@ const EditGame = ({
         play: newPlay,
       }),
     });
-    setApiCall(!apiCall);
-    setTimeout(navigate(`/gameDetail/${id}`), 1000);
+    setApiCall(apiCall + 1);
+    navigate(`/gameDetail/${id}`)
   }
 
   return (
