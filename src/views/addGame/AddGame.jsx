@@ -37,8 +37,8 @@ const AddGame = () => {
         play: newPlay,
       }),
     });
-    setApiCall(!apiCall);
-    setTimeout(navigate("/games"), 1000);
+    setApiCall(apiCall + 1);
+    navigate("/games")
   }
 
   return (

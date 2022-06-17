@@ -29,8 +29,8 @@ const GameDetail = ({
         "Content-Type": "application/json",
       },
     });
-    setApiCall(!apiCall);
-    setTimeout(navigate("/games"), 1000);
+    setApiCall(apiCall + 1);
+    navigate("/games")
   }
   return (
     <section className="gameDetail">
