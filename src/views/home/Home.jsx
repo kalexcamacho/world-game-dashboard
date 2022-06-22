@@ -4,11 +4,17 @@ import { useContext } from "react";
 import { ContextApp } from "../../context/ContextApp";
 
 const Home = () => {
+
   const { users, games, posts, library } = useContext(ContextApp);
   const lastUser = users[users.length - 1];
   const userGames = library.filter((game) => game.userId === lastUser?.id);
   const userPosts = posts.filter((post) => post.userId === lastUser?.id);
   const lastGame = games[games.length - 1];
+
+  const publicationTime = (day) => {
+    let newDate = new Date(day)
+    return `${newDate.getDate()} / ${newDate.getMonth() + 1} / ${newDate.getFullYear()}`
+  };
 
   return (
     <section className="Home-wrapper">
@@ -24,7 +30,7 @@ const Home = () => {
             <h3>{lastUser?.nickName}</h3>
             <p>{lastUser?.email}</p>
             <p>Creado:</p>
-            <p>{lastUser?.updated_at}</p>
+            <p>{publicationTime(lastUser?.updated_at)}</p>
             <div className="Section-data">
               <div className="Section-data-left">
                 <p>No. de juegos</p>

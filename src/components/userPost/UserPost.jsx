@@ -4,9 +4,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 function UserPost({ title, description, created_at, img, user_id }) {
+  
   const { users, games } = useContext(ContextApp);
   const user = users.find((user) => user.id === user_id);
-  const game = games.find(i => i.id == title)
+  const game = games.find(i => i.id === Number(title))
   const publicationTime = (day) => {
     let toDay = new Date().getTime();
     let fecha = new Date(day).getTime();
@@ -28,6 +29,7 @@ function UserPost({ title, description, created_at, img, user_id }) {
       }
     }
   };
+
   return (
     <article className="postContainer">
       <div className="postUserInfo">

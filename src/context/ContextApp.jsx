@@ -2,11 +2,10 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const ContextApp = createContext([]);
 export const ContextAppProvider = (props) => {
-  const [apiCall, setApiCall] = useState(0)
+  const [apiCall, setApiCall] = useState(0);
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
   const [genres, setGenres] = useState([]);
-  const [filterList, setFilterList] = useState([])
   const [posts, setPosts] = useState([]);
   const [library, setLibrary] = useState([]);
 
@@ -19,7 +18,6 @@ export const ContextAppProvider = (props) => {
     });
     const data = await res.json();
     setGames(data);
-    setFilterList(data)
   }
 
   function fetchUsers() {
@@ -49,7 +47,7 @@ export const ContextAppProvider = (props) => {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
-      }
+      },
     });
     const data = await res.json();
     setPosts(data);
@@ -59,12 +57,11 @@ export const ContextAppProvider = (props) => {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
-      }
+      },
     });
     const data = await res.json();
     setLibrary(data);
   }
-
 
   useEffect(() => {
     fetchGames();
@@ -75,7 +72,17 @@ export const ContextAppProvider = (props) => {
   }, [apiCall]);
 
   return (
-    <ContextApp.Provider value={{ games, users, posts, genres, filterList, setFilterList, library, apiCall, setApiCall }}>
+    <ContextApp.Provider
+      value={{
+        games,
+        users,
+        posts,
+        genres,
+        library,
+        apiCall,
+        setApiCall,
+      }}
+    >
       {props.children}
     </ContextApp.Provider>
   );

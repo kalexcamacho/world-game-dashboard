@@ -108,7 +108,7 @@ const EditGame = ({
                   <option
                     value={genre.id}
                     key={genre.id}
-                    selected={genre.id == genre_id}
+                    selected={genre.id === genre_id}
                   >
                     {genre.title}
                   </option>

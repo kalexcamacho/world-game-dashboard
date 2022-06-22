@@ -1,20 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ContextApp } from "../../context/ContextApp";
 import CardGame from "../../components/cardGame/CardGame";
 import "./Games.scss";
+import { useEffect } from "react";
 
 const Games = () => {
-  const { games, genres, filterList, setFilterList } = useContext(ContextApp);
+  const { games, genres } = useContext(ContextApp);
+  const [filterList, setFilterList] = useState([]);
+  useEffect(() => {
+    setFilterList(games)
+  },[games])
 
   const filterHandler = (e) => {
     let updateList = games.filter((value) => {
       return e.target.value === "todos"
         ? value
-        : value.genre_id == e.target.value;
+        : value.genre_id === Number(e.target.value);
     });
     setFilterList(updateList);
   };
+
   return (
     <section className="games">
       <h1>Administrador de juegos</h1>
@@ -34,7 +40,11 @@ const Games = () => {
       <h5>Mostrando {filterList.length} resultados</h5>
       <div className="listContainer">
         {filterList.map((game) => {
-          return <Link key={game.id} to={`/gameDetail/${game.id}`}><CardGame {...game} /></Link>
+          return (
+            <Link key={game.id} to={`/gameDetail/${game.id}`}>
+              <CardGame {...game} />
+            </Link>
+          );
         })}
       </div>
     </section>
