@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { ContextApp } from "../../context/ContextApp";
 import "../addGame/AddGame.scss";
@@ -17,15 +17,30 @@ const EditGame = ({
   playstation,
 }) => {
   const { genres, apiCall, setApiCall } = useContext(ContextApp);
-  const [newTitle, setNewTitle] = useState(title);
-  const [newDescription, setNewDescription] = useState(description);
-  const [newPrice, setNewPrice] = useState(price);
-  const [newDiscount, setNewDiscount] = useState(discount);
-  const [newGenre, setNewGenre] = useState(genre_id);
-  const [newAge, setNewAge] = useState(rating_age);
-  const [newXbox, setNewXbox] = useState(xbox);
-  const [newPc, setNewPc] = useState(pc);
-  const [newPlay, setNewPlay] = useState(playstation);
+  const [form, setForm] = useState({});
+
+  useEffect(() => {
+    setForm({
+      id,
+      title,
+      description,
+      rating_age,
+      genre_id,
+      img_card,
+      price,
+      discount,
+      xbox,
+      pc,
+      playstation,
+    });
+  }, []);
+
+  const handleForm = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const navigate = useNavigate();
 
@@ -37,20 +52,10 @@ const EditGame = ({
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title: newTitle,
-        description: newDescription,
-        price: newPrice,
-        discount: newDiscount,
-        genre: newGenre,
-        ratingAge: newAge,
-        xbox: newXbox,
-        pc: newPc,
-        play: newPlay,
-      }),
+      body: JSON.stringify(form),
     });
     setApiCall(apiCall + 1);
-    navigate(`/gameDetail/${id}`)
+    navigate(`/gameDetail/${id}`);
   }
 
   return (
@@ -65,8 +70,9 @@ const EditGame = ({
             <input
               type="text"
               id="nombre"
+              name="title"
               defaultValue={title}
-              onChange={(e) => setNewTitle(e.target.value)}
+              onChange={(e) => handleForm(e)}
             />
           </label>
           <label htmlFor="descripcion">
@@ -74,7 +80,8 @@ const EditGame = ({
             <textarea
               id="descripcion"
               defaultValue={description}
-              onChange={(e) => setNewDescription(e.target.value)}
+              name="description"
+              onChange={(e) => handleForm(e)}
             ></textarea>
           </label>
           <label htmlFor="precio">
@@ -82,8 +89,9 @@ const EditGame = ({
             <input
               type="text"
               id="precio"
+              name="price"
               defaultValue={price.toFixed(3)}
-              onChange={(e) => setNewPrice(e.target.value)}
+              onChange={(e) => handleForm(e)}
             />
           </label>
           <label htmlFor="descuento">
@@ -91,8 +99,9 @@ const EditGame = ({
             <input
               type="number"
               id="descuento"
+              name="discount"
               defaultValue={discount}
-              onChange={(e) => setNewDiscount(e.target.value)}
+              onChange={(e) => handleForm(e)}
             />
           </label>
           <label htmlFor="img">
@@ -101,15 +110,15 @@ const EditGame = ({
           </label>
           <label>
             Genero:
-            <select name="genre" onChange={(e) => setNewGenre(e.target.value)}>
+            <select
+              name="genre"
+              onChange={(e) => handleForm(e)}
+              value={genre_id}
+            >
               <option value="todos">Todos los generos</option>
               {genres.map((genre) => {
                 return (
-                  <option
-                    value={genre.id}
-                    key={genre.id}
-                    selected={genre.id === genre_id}
-                  >
+                  <option value={genre.id} key={genre.id}>
                     {genre.title}
                   </option>
                 );
@@ -121,8 +130,9 @@ const EditGame = ({
             <input
               type="number"
               id="edad"
+              name="ratingAge"
               defaultValue={rating_age}
-              onChange={(e) => setNewAge(e.target.value)}
+              onChange={(e) => handleForm(e)}
             />
           </label>
 
@@ -136,7 +146,7 @@ const EditGame = ({
                   id="siXbox"
                   value="1"
                   defaultChecked={xbox === 1}
-                  onChange={(e) => setNewXbox(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 Si
               </label>
@@ -148,7 +158,7 @@ const EditGame = ({
                   value="0"
                   required
                   defaultChecked={xbox === 0}
-                  onChange={(e) => setNewXbox(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 No
               </label>
@@ -162,7 +172,7 @@ const EditGame = ({
                   id="siPc"
                   value="1"
                   defaultChecked={pc === 1}
-                  onChange={(e) => setNewPc(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 Si
               </label>
@@ -174,7 +184,7 @@ const EditGame = ({
                   value="0"
                   required
                   defaultChecked={pc === 0}
-                  onChange={(e) => setNewPc(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 No
               </label>
@@ -188,7 +198,7 @@ const EditGame = ({
                   id="siPlay"
                   value="1"
                   defaultChecked={playstation === 1}
-                  onChange={(e) => setNewPlay(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 Si
               </label>
@@ -200,13 +210,15 @@ const EditGame = ({
                   value="0"
                   required
                   defaultChecked={playstation === 0}
-                  onChange={(e) => setNewPlay(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 No
               </label>
             </div>
           </div>
-          <button type="submmit" onClick={(e) => updateGame(e)}>editar juego</button>
+          <button type="submmit" onClick={(e) => updateGame(e)}>
+            editar juego
+          </button>
         </form>
       </div>
     </section>
