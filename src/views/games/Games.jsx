@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import "./Games.scss";
 import { Link } from "react-router-dom";
 import { ContextApp } from "../../context/ContextApp";
 import CardGame from "../../components/cardGame/CardGame";
-import "./Games.scss";
-import { useEffect } from "react";
 
 const Games = () => {
   const { games, genres } = useContext(ContextApp);
