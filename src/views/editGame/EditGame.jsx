@@ -1,23 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { ContextApp } from "../../context/ContextApp";
 import "../addGame/AddGame.scss";
 
-const EditGame = ({
-  id,
-  title,
-  description,
-  rating_age,
-  genre_id,
-  img_card,
-  price,
-  discount,
-  xbox,
-  pc,
-  playstation,
-}) => {
-  const { genres, apiCall, setApiCall } = useContext(ContextApp);
+const EditGame = () => {
+  const { games, genres, apiCall, setApiCall } = useContext(ContextApp);
   const [form, setForm] = useState({});
+
+  const params = useParams();
+  const game = games.find((i) => i.id == params.id);
+  const {
+    id,
+    title,
+    img_card,
+    description,
+    genre_id,
+    price,
+    discount,
+    rating_age,
+    xbox,
+    pc,
+    playstation,
+  } = game;
 
   useEffect(() => {
     setForm({

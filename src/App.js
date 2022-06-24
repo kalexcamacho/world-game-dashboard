@@ -12,36 +12,24 @@ import GameDetail from "./views/gameDetail/GameDetail";
 import EditGame from "./views/editGame/EditGame";
 
 function App() {
-  const { games } = useContext(ContextApp);
+  const { pageLoaded } = useContext(ContextApp);
   return (
     <div className="App">
       <NavBar />
       <main className="mainContainer">
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/posts" element={<PostAdmin />} />
-          <Route path="/addGame" element={<AddGame />} />
-          {games.map((game) => {
-            return (
-              <Route
-                path={`/gameDetail/${game.id}`}
-                key={game.id}
-                element={<GameDetail {...game} />}
-              />
-            );
-          })}
-          {games.map((game) => {
-            return (
-              <Route
-                path={`/gameEdit/${game.id}`}
-                key={game.id}
-                element={<EditGame {...game} />}
-              />
-            );
-          })}
-        </Routes>
+        {pageLoaded ? (
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/posts" element={<PostAdmin />} />
+            <Route path="/addGame" element={<AddGame />} />
+            <Route path="/gameDetail/:id" element={<GameDetail />} />
+            <Route path="/gameEdit/:id" element={<EditGame />} />
+          </Routes>
+        ) : (
+          "cargando ..."
+        )}
       </main>
     </div>
   );

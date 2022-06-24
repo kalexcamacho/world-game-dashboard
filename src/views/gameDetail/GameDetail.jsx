@@ -1,21 +1,25 @@
 import React, { useContext } from "react";
 import "./GameDetail.scss";
 import { ContextApp } from "../../context/ContextApp";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-const GameDetail = ({
-  id,
-  title,
-  img_card,
-  description,
-  genre_id,
-  price,
-  discount,
-  xbox,
-  pc,
-  playstation,
-}) => {
-  const { genres, apiCall, setApiCall } = useContext(ContextApp);
+const GameDetail = () => {
+  const { games, genres, apiCall, setApiCall } = useContext(ContextApp);
+  const params = useParams();
+
+  const game = games.find((i) => i.id == params.id);
+  const {
+    id,
+    title,
+    img_card,
+    description,
+    genre_id,
+    price,
+    discount,
+    xbox,
+    pc,
+    playstation,
+  } = game;
   const genreName = genres.find((genre) => genre.id === genre_id);
 
   const navigate = useNavigate();
@@ -30,8 +34,9 @@ const GameDetail = ({
       },
     });
     setApiCall(apiCall + 1);
-    navigate("/games")
+    navigate("/games");
   }
+
   return (
     <section className="gameDetail">
       <h1>Administrador de juegos</h1>

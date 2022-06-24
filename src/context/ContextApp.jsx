@@ -8,6 +8,7 @@ export const ContextAppProvider = (props) => {
   const [genres, setGenres] = useState([]);
   const [posts, setPosts] = useState([]);
   const [library, setLibrary] = useState([]);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   async function fetchGames() {
     const res = await fetch("http://localhost:3030/api/products", {
@@ -69,6 +70,9 @@ export const ContextAppProvider = (props) => {
     fetchGenres();
     fetchPosts();
     fetchLibrary();
+    setTimeout(() => {
+      setPageLoaded(true);
+    }, 500);
   }, [apiCall]);
 
   return (
@@ -81,6 +85,7 @@ export const ContextAppProvider = (props) => {
         library,
         apiCall,
         setApiCall,
+        pageLoaded,
       }}
     >
       {props.children}
