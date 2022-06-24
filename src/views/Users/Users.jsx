@@ -5,7 +5,7 @@ import "./Users.scss";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function Users() {
-  const { users, library, posts, apiCall, setApiCall } = useContext(ContextApp);
+  const { users, library, posts, setPageLoaded } = useContext(ContextApp);
   function updateUser(id, nickName, name, event) {
     event.preventDefault();
     fetch(`http://localhost:3030/api/users/edit/${id}`, {
@@ -19,7 +19,7 @@ function Users() {
         userName: `Usuario bloqueado(${name})`,
       }),
     });
-    setApiCall(apiCall+1)
+    setPageLoaded(false)
   }
   return (
     <div className="table-container">

@@ -4,7 +4,7 @@ import { ContextApp } from "../../context/ContextApp";
 import "../addGame/AddGame.scss";
 
 const EditGame = () => {
-  const { games, genres, apiCall, setApiCall } = useContext(ContextApp);
+  const { games, genres, setPageLoaded } = useContext(ContextApp);
   const [form, setForm] = useState({});
 
   const params = useParams();
@@ -58,7 +58,7 @@ const EditGame = () => {
       },
       body: JSON.stringify(form),
     });
-    setApiCall(apiCall + 1);
+    setPageLoaded(false)
     navigate(`/gameDetail/${id}`);
   }
 

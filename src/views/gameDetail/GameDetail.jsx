@@ -4,7 +4,7 @@ import { ContextApp } from "../../context/ContextApp";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const GameDetail = () => {
-  const { games, genres, apiCall, setApiCall } = useContext(ContextApp);
+  const { games, genres, setPageLoaded } = useContext(ContextApp);
   const params = useParams();
 
   const game = games.find((i) => i.id == params.id);
@@ -33,7 +33,7 @@ const GameDetail = () => {
         "Content-Type": "application/json",
       },
     });
-    setApiCall(apiCall + 1);
+    setPageLoaded(false)
     navigate("/games");
   }
 

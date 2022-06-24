@@ -2,7 +2,6 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const ContextApp = createContext([]);
 export const ContextAppProvider = (props) => {
-  const [apiCall, setApiCall] = useState(0);
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -72,8 +71,8 @@ export const ContextAppProvider = (props) => {
     fetchLibrary();
     setTimeout(() => {
       setPageLoaded(true);
-    }, 500);
-  }, [apiCall]);
+    }, 300);
+  }, [pageLoaded]);
 
   return (
     <ContextApp.Provider
@@ -83,9 +82,8 @@ export const ContextAppProvider = (props) => {
         posts,
         genres,
         library,
-        apiCall,
-        setApiCall,
         pageLoaded,
+        setPageLoaded
       }}
     >
       {props.children}

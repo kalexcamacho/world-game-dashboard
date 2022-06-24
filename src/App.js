@@ -28,7 +28,7 @@ function App() {
             <Route path="/gameEdit/:id" element={<EditGame />} />
           </Routes>
         ) : (
-          "cargando ..."
+          <h4 className="loading">cargando ...</h4>
         )}
       </main>
     </div>

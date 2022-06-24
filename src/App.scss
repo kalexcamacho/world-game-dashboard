@@ -18,7 +18,15 @@ main{
   .mainContainer {
     height: 100vh;
     overflow-y: auto;
+
+    .loading{
+      font-size: 50px;
+      color: $greenDark;
+      text-align: center;
+      margin-top: 20%;
+    }
   }
+
 }
 
 

@@ -4,41 +4,35 @@ import { useNavigate } from "react-router";
 import "./AddGame.scss";
 
 const AddGame = () => {
-  const { genres, apiCall, setApiCall } = useContext(ContextApp);
-  const [newTitle, setNewTitle] = useState("");
-  const [newDescription, setNewDescription] = useState("");
-  const [newPrice, setNewPrice] = useState("");
-  const [newDiscount, setNewDiscount] = useState("");
-  const [newGenre, setNewGenre] = useState("");
-  const [newAge, setNewAge] = useState("");
-  const [newXbox, setNewXbox] = useState("");
-  const [newPc, setNewPc] = useState("");
-  const [newPlay, setNewPlay] = useState("");
+  const { genres, setPageLoaded } = useContext(ContextApp);
+  const [form, setForm] = useState({});
+  const [errFoo, setErrFoo] = useState(false)
 
+  const handleForm = (event) => {
+    setErrFoo(false)
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  };
   const navigate = useNavigate();
-
+  console.log();
   function addGame(e) {
     e.preventDefault();
-    fetch(`http://localhost:3030/api/products/create`, {
-      method: "POST",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: newTitle,
-        description: newDescription,
-        price: newPrice,
-        discount: newDiscount,
-        genre: newGenre,
-        ratingAge: newAge,
-        xbox: newXbox,
-        pc: newPc,
-        play: newPlay,
-      }),
-    });
-    setApiCall(apiCall + 1);
-    navigate("/games")
+    if (Object.keys(form).length == 9) {
+      fetch(`http://localhost:3030/api/products/create`, {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+      setPageLoaded(false);
+      navigate("/games");
+    } else {
+      setErrFoo(true)
+    }
   }
 
   return (
@@ -52,7 +46,8 @@ const AddGame = () => {
             <input
               type="text"
               id="nombre"
-              onChange={(e) => setNewTitle(e.target.value)}
+              name="title"
+              onChange={(e) => handleForm(e)}
               required
             />
           </label>
@@ -60,7 +55,8 @@ const AddGame = () => {
             Descripcion:
             <textarea
               id="descripcion"
-              onChange={(e) => setNewDescription(e.target.value)}
+              name="description"
+              onChange={(e) => handleForm(e)}
             ></textarea>
           </label>
           <label htmlFor="precio">
@@ -68,7 +64,8 @@ const AddGame = () => {
             <input
               type="text"
               id="precio"
-              onChange={(e) => setNewPrice(e.target.value)}
+              name="price"
+              onChange={(e) => handleForm(e)}
               required
             />
           </label>
@@ -77,7 +74,8 @@ const AddGame = () => {
             <input
               type="number"
               id="descuento"
-              onChange={(e) => setNewDiscount(e.target.value)}
+              name="discount"
+              onChange={(e) => handleForm(e)}
               required
             />
           </label>
@@ -87,11 +85,7 @@ const AddGame = () => {
           </label>
           <label>
             Genero:
-            <select
-              name="genre"
-              onChange={(e) => setNewGenre(e.target.value)}
-              required
-            >
+            <select name="genre" onChange={(e) => handleForm(e)} required>
               <option value="todos">Todos los generos</option>
               {genres.map((genre) => {
                 return (
@@ -107,7 +101,8 @@ const AddGame = () => {
             <input
               type="number"
               id="edad"
-              onChange={(e) => setNewAge(e.target.value)}
+              name="ratingAge"
+              onChange={(e) => handleForm(e)}
               required
             />
           </label>
@@ -121,7 +116,7 @@ const AddGame = () => {
                   name="xbox"
                   id="siXbox"
                   value="1"
-                  onChange={(e) => setNewXbox(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 Si
               </label>
@@ -131,7 +126,7 @@ const AddGame = () => {
                   name="xbox"
                   id="noXbox"
                   value="0"
-                  onChange={(e) => setNewXbox(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                   required
                 />
                 No
@@ -145,7 +140,7 @@ const AddGame = () => {
                   name="pc"
                   id="siPc"
                   value="1"
-                  onChange={(e) => setNewPc(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 Si
               </label>
@@ -155,7 +150,7 @@ const AddGame = () => {
                   name="pc"
                   id="noPc"
                   value="0"
-                  onChange={(e) => setNewPc(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                   required
                 />
                 No
@@ -169,7 +164,7 @@ const AddGame = () => {
                   name="play"
                   id="siPlay"
                   value="1"
-                  onChange={(e) => setNewPlay(e.target.value)}
+                  onChange={(e) => handleForm(e)}
                 />
                 Si
               </label>
@@ -179,13 +174,14 @@ const AddGame = () => {
                   name="play"
                   id="noPlay"
                   value="0"
-                  onChange={(e) => setNewPlay(e.target.value)}
-                  required
+                  onChange={(e) => handleForm(e)}
+                  required={true}
                 />
                 No
               </label>
             </div>
           </div>
+          {errFoo && <h3>Ningun campo puede estar vacio.</h3>}
           <button type="submmit" onClick={(e) => addGame(e)}>
             + agregar juego nuevo
           </button>
