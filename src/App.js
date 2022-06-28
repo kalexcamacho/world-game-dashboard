@@ -10,6 +10,7 @@ import Home from "./views/home/Home";
 import AddGame from "./views/addGame/AddGame";
 import GameDetail from "./views/gameDetail/GameDetail";
 import EditGame from "./views/editGame/EditGame";
+import Loading from "./components/loading/Loading";
 
 function App() {
   const { pageLoaded } = useContext(ContextApp);
@@ -32,7 +33,8 @@ function App() {
             />
           </Routes>
         ) : (
-          <h4 className="loading">cargando ...</h4>
+          // <h4 className="loading">cargando ...</h4>
+          <Loading />
         )}
       </main>
     </div>
