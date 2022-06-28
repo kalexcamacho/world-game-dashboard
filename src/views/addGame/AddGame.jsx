@@ -7,7 +7,7 @@ const AddGame = () => {
   const { genres, setPageLoaded } = useContext(ContextApp);
   const [form, setForm] = useState({});
   const [errFoo, setErrFoo] = useState(false);
-  const [productImg, setProductImg] = useState(null)
+  const navigate = useNavigate();
 
   const handleForm = (event) => {
     setErrFoo(false);
@@ -17,11 +17,10 @@ const AddGame = () => {
 
     });
   };
-  const navigate = useNavigate();
-  console.log();
+
   function addGame(e) {
     e.preventDefault();
-    if (Object.keys(form).length <= 9) {
+    if (Object.keys(form).length == 9) {
       fetch(`http://localhost:3030/api/products/create`, {
         method: "POST",
         headers: {
@@ -30,7 +29,6 @@ const AddGame = () => {
         },
         body: JSON.stringify(form),
       })
-      .then(response => console.log(response))
       setPageLoaded(false);
       navigate("/games");
     } else {
