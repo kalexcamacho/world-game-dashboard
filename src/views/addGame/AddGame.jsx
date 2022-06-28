@@ -80,17 +80,6 @@ const AddGame = () => {
               required
             />
           </label>
-          <label htmlFor="img">
-            Imagen:
-            <input
-              type="file"
-              id="img"
-              name="img_card"
-              accept="image/*"
-              className="imgFile"
-              onChange={(e) => console.log(e.target.files)}
-            />
-          </label>
           <label>
             Genero:
             <select name="genre" onChange={(e) => handleForm(e)} required>
