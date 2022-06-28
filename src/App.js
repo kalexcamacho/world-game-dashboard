@@ -33,7 +33,6 @@ function App() {
             />
           </Routes>
         ) : (
-          // <h4 className="loading">cargando ...</h4>
           <Loading />
         )}
       </main>
