@@ -1,0 +1,142 @@
+@import "../../App.scss";
+
+.formGame {
+  margin: 0 auto;
+  padding: 20px 15px 100px;
+  width: 100%;
+
+  h1 {
+    color: $greenDark;
+    font-size: 18px;
+  }
+
+  h4 {
+    color: $green;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+
+  img {
+    display: none;
+  }
+
+  form {
+    border: 1px solid $grayDArk;
+    margin: 0 auto;
+    width: 300px;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      font-weight: 300;
+      margin-top: 15px;
+      text-transform: lowercase;
+
+      textarea {
+        height: 60px;
+        margin-top: 5px;
+        outline: none;
+        padding: 10px;
+        resize: none;
+      }
+
+      input {
+        border: 1px solid $grayDArk;
+        height: 30px;
+        margin-top: 5px;
+        outline: none;
+        padding: 5px;
+      }
+
+      select {
+        height: 40px;
+        margin-top: 5px;
+        outline: none;
+      }
+
+      .imgFile {
+        height: 49px;
+        padding: 12px 5px;
+      }
+    }
+
+    .platformsContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 15px 0;
+
+      .platform {
+        font-size: 14px;
+        text-align: center;
+        width: 30%;
+        label {
+          align-items: center;
+          flex-direction: row;
+          justify-content: center;
+          margin-top: 5px;
+          input {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 400;
+      text-align: center;
+      color: #922020;
+    }
+
+    button {
+      background-color: #fff;
+      border: none;
+      color: $green;
+      cursor: pointer;
+      font-size: 18px;
+      outline: none;
+      text-decoration: underline;
+      &:hover {
+        color: $grayDArk;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .formGame {
+    padding: 30px 30px 50px;
+    h1 {
+      font-size: 26px;
+      margin-bottom: 5px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .formGame {
+    padding: 35px 40px;
+    .formContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      img {
+        display: block;
+        height: 734px;
+      }
+      form {
+        width: 450px;
+        margin: 0;
+      }
+    }
+  }
+}

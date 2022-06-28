@@ -1,0 +1,47 @@
+.postAdmin{
+    width: 100%;
+    padding: 20px;
+    h2{
+        font-size: 18px;
+        color: #117B0F;
+    }
+    .cardsPostContainer{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .postAdmin {
+        padding: 28px;
+        h2{
+            font-size: 26px;
+        }
+    }
+
+}
+
+@media screen and (min-width: 1220px) {
+
+    .postAdmin {
+        padding: 35px;
+        h2{
+            font-size: 26px;
+        }
+        .cardsPostContainer{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+}

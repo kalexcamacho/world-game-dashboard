@@ -1,0 +1,46 @@
+@import "../../App.scss";
+
+a {
+  text-decoration: none;
+}
+.cardGame {
+  border-bottom: 2px solid #fff;
+  height: 350px;
+  margin: 7.5px 0;
+  width: 140px;
+
+  &:hover {
+    border-bottom: 2px solid $grayDArk;
+  }
+
+  img {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  h3 {
+    color: $grayDArk;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  h4 {
+    color: $green;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  p {
+    color: $grayDArk;
+    font-size: 14px;
+    font-style: italic;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cardGame {
+    height: 370px;
+    margin: 7.5px 5px;
+    width: 160px;
+  }
+}
