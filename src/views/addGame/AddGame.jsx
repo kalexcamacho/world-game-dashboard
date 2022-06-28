@@ -20,7 +20,7 @@ const AddGame = () => {
 
   function addGame(e) {
     e.preventDefault();
-    if (Object.keys(form).length == 9) {
+    if (Object.keys(form).length === 9) {
       fetch(`http://localhost:3030/api/products/create`, {
         method: "POST",
         headers: {
