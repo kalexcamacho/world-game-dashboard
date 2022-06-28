@@ -8,7 +8,7 @@ const EditGame = () => {
   const [form, setForm] = useState({});
 
   const params = useParams();
-  const game = games.find((i) => i.id == params.id);
+  const game = games.find((i) => i.id === Number(params.id));
   const {
     id,
     title,
@@ -67,7 +67,7 @@ const EditGame = () => {
       <h1>Administrador de juegos</h1>
       <h4>Editando: {title}</h4>
       <div className="formContainer">
-        <img src={`../../../images/products/${img_card}`} alt={title} />
+        <img src={`http://localhost:3030/images/products/${img_card}`} alt={title} />
         <form>
           <label htmlFor="nombre">
             Nombre:
