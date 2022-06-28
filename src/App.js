@@ -26,6 +26,10 @@ function App() {
             <Route path="/addGame" element={<AddGame />} />
             <Route path="/gameDetail/:id" element={<GameDetail />} />
             <Route path="/gameEdit/:id" element={<EditGame />} />
+            <Route
+              path="*"
+              element={<h4 className="loading">404 page no found</h4>}
+            />
           </Routes>
         ) : (
           <h4 className="loading">cargando ...</h4>

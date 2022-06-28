@@ -7,6 +7,7 @@ import CardGame from "../../components/cardGame/CardGame";
 const Games = () => {
   const { games, genres } = useContext(ContextApp);
   const [filterList, setFilterList] = useState([]);
+  
   useEffect(() => {
     setFilterList(games)
   },[games])
