@@ -23,7 +23,7 @@ const Home = () => {
         <p className="title-mobile-1">Ultimo usuario creado</p>
         <article className="Section-user">
           <div className="User-img">
-            <img src={`/images/usersProfileImages/${lastUser?.img_user}`} alt="" />
+            <img src={`http://localhost:3030/images/usersProfileImages/${lastUser?.img_user}`} alt={lastUser?.name} />
           </div>
           <div className="User-data">
             <h2>{lastUser?.name}</h2>
@@ -46,7 +46,7 @@ const Home = () => {
         <p className="title-mobile-2">Ultimo juego agregado</p>
         <article className="Section-user">
           <div className="Game-img">
-            <img src={`/images/products/${lastGame?.img_card}`} alt="" />
+            <img src={`http://localhost:3030/images/products/${lastGame?.img_card}`} alt="" />
           </div>
           <div className="User-data">
             <h2>{lastGame?.title}</h2>

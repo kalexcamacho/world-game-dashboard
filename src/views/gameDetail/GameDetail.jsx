@@ -7,18 +7,18 @@ const GameDetail = () => {
   const { games, genres, setPageLoaded } = useContext(ContextApp);
   const [game, setGame] = useState({})
   const genreName = genres.find((genre) => genre.id === game.genre_id);
-  const imgProduct = Object.keys(game) == 0 ? '' : `http://localhost:3030/images/products/${game.img_card}`
+  const imgProduct = Object.keys(game).length === 0 ? '' : `http://localhost:3030/images/products/${game.img_card}`
   const params = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const specificGame = games.find((i) => i.id == params.id)
+    const specificGame = games.find((i) => i.id === Number(params.id))
     if(specificGame) {
       setGame(specificGame)
     } else {
       navigate("/games")
     }
-  },[game])
+  },[games])
 
   function deleteGame(e) {
     e.preventDefault();

@@ -108,10 +108,6 @@ const EditGame = () => {
               onChange={(e) => handleForm(e)}
             />
           </label>
-          <label htmlFor="img">
-            Imagen:
-            <input type="file" id="img" accept="image/*" className="imgFile" />
-          </label>
           <label>
             Genero:
             <select

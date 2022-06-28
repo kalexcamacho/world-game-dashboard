@@ -20,7 +20,7 @@ const AddGame = () => {
 
   function addGame(e) {
     e.preventDefault();
-    if (Object.keys(form).length == 9) {
+    if (Object.keys(form).length === 9) {
       fetch(`http://localhost:3030/api/products/create`, {
         method: "POST",
         headers: {
@@ -78,17 +78,6 @@ const AddGame = () => {
               name="discount"
               onChange={(e) => handleForm(e)}
               required
-            />
-          </label>
-          <label htmlFor="img">
-            Imagen:
-            <input
-              type="file"
-              id="img"
-              name="img_card"
-              accept="image/*"
-              className="imgFile"
-              onChange={(e) => console.log(e.target.files)}
             />
           </label>
           <label>

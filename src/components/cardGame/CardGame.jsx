@@ -5,7 +5,7 @@ const CardGame = ({ img_card, title, price, discount }) => {
   return (
     <article className="cardGame">
       <img
-        src={`./images/products/${img_card}`}
+        src={`http://localhost:3030/images/products/${img_card}`}
         alt={title}
       />
       <h3>{title}</h3>

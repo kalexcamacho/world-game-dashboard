@@ -3,11 +3,10 @@ import { ContextApp } from "../../context/ContextApp";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-function UserPost({ title, description, created_at, img, user_id }) {
-  
-  const { users, games } = useContext(ContextApp);
+function UserPost({ title, description, created_at, img, user_id, id }) {
+  const { users, games, setPageLoaded } = useContext(ContextApp);
   const user = users.find((user) => user.id === user_id);
-  const game = games.find(i => i.id === Number(title))
+  const game = games.find((i) => i.id === Number(title));
   const publicationTime = (day) => {
     let toDay = new Date().getTime();
     let fecha = new Date(day).getTime();
@@ -30,11 +29,26 @@ function UserPost({ title, description, created_at, img, user_id }) {
     }
   };
 
+  function updatePost(event) {
+    event.preventDefault();
+    fetch(`http://localhost:3030/api/community/edit/${id}`, {
+      method: "PUT",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        description: "Publicacion marcada como inadecuada.",
+      }),
+    });
+    setPageLoaded(false);
+  }
+
   return (
     <article className="postContainer">
       <div className="postUserInfo">
         <img
-          src={`./images/usersProfileImages/${user.img_user}`}
+          src={`http://localhost:3030/images/usersProfileImages/${user.img_user}`}
           alt="Profile img"
         />
         <div>
@@ -48,8 +62,10 @@ function UserPost({ title, description, created_at, img, user_id }) {
           {game.title}
         </Link>
         <p>{description}</p>
-        <img src={`./images/usersPostImages/${img}`} alt="Game img" />
-        <button>Marcar como inadecuado</button>
+        {img !== "none" && (
+          <img src={`http://localhost:3030/images/usersPostImages/${img}`} alt="Game img" />
+        )}
+        <button onClick={(e) => updatePost(e)}>Marcar como inadecuado</button>
       </div>
     </article>
   );
