@@ -48,7 +48,7 @@ function Users() {
               <tr key={user.id}>
                 <td className="td-avatar">
                   <Avatar
-                    src={`./images/usersProfileImages/${user.img_user}`}
+                    src={`http://localhost:3030/images/usersProfileImages/${user.img_user}`}
                   />
                 </td>
                 <td>{user.id}</td>
